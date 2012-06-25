@@ -2,12 +2,14 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8,00"
-	Name="split_driver"
-	ProjectGUID="{468F35B6-5C94-41EA-8BA3-9F5440ECFEF5}"
-	RootNamespace="split_driver"
+	Name="split_drv"
+	ProjectGUID="{D26CD73E-2878-485A-9925-FD54F613E9A3}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
+		<Platform
+			Name="Platform Builder (_TGTCPU)"
+		/>
 		<Platform
 			Name="Pocket PC 2003 (ARMV4)"
 		/>
@@ -37,6 +39,88 @@
 	</ToolFiles>
 	<Configurations>
 		<Configuration
+			Name="Debug|Platform Builder (_TGTCPU)"
+			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="0"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				MinimalRebuild="true"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE"
+				Culture="1033"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				OutputFile="$(OutDir)/split_drv.dll"
+				LinkIncremental="2"
+				DelayLoadDLLs="$(NOINHERIT)"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
+				SubSystem="0"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				ImportLibrary="$(OutDir)/split_drv.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
 			Name="Debug|Pocket PC 2003 (ARMV4)"
 			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
@@ -62,7 +146,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -84,15 +168,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,4.20 /machine:ARM /ARMPADCODE"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -144,8 +228,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
-				GeneratePreprocessedFile="0"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -167,15 +250,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -227,7 +310,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -249,16 +332,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
-				IgnoreDefaultLibraryNames="libc.lib"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -310,7 +392,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -332,15 +414,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -392,7 +474,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -414,15 +496,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPS"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -474,7 +556,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -496,15 +578,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPS"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -556,7 +638,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -578,15 +660,15 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPSFPU"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -638,7 +720,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="0"
-				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="_DEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;DEBUG;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				MinimalRebuild="true"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -660,15 +742,98 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPSFPU"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Platform Builder (_TGTCPU)"
+			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE"
+				Culture="1033"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions=" /subsystem:windowsce,5.01"
+				OutputFile="$(OutDir)/split_drv.dll"
+				LinkIncremental="1"
+				DelayLoadDLLs="$(NOINHERIT)"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
+				SubSystem="0"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -720,7 +885,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;$(PLATFORMDEFINES);WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -741,17 +906,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,4.20 /machine:ARM /ARMPADCODE"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -803,7 +968,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -824,17 +989,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -886,7 +1051,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -907,18 +1072,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
-				IgnoreDefaultLibraryNames="libc.lib"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -970,7 +1134,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -991,17 +1155,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -1053,7 +1217,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -1074,17 +1238,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPS"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -1136,7 +1300,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -1157,17 +1321,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPS"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -1219,7 +1383,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -1240,17 +1404,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPSFPU"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -1302,7 +1466,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="7"
 				Optimization="2"
-				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRIVER_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
+				PreprocessorDefinitions="NDEBUG;_WIN32_WCE=$(CEVER);UNDER_CE;WINCE;_WINDOWS;_USRDLL;SPLIT_DRV_EXPORTS;$(ARCHFAM);$(_ARCHFAM_);_UNICODE;UNICODE"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -1323,17 +1487,17 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.00 /machine:MIPSFPU"
-				OutputFile="$(OutDir)/split_driver.dll"
+				OutputFile="$(OutDir)/split_drv.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/split_driver.pdb"
+				ProgramDatabaseFile="$(OutDir)/split_drv.pdb"
 				SubSystem="0"
 				StackReserveSize="65536"
 				StackCommitSize="4096"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/split_driver.lib"
+				ImportLibrary="$(OutDir)/split_drv.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -1368,36 +1532,12 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-			<File
-				RelativePath=".\cbuffer.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\driver.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\common\splitter_settings.c"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\cbuffer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\driver.h"
-				>
-			</File>
-			<File
-				RelativePath="..\common\splitter_settings.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"

@@ -13,6 +13,7 @@ public:
 	BOOL	PreDeinit(PVOID pInitContext) const;
 	BOOL	Deinit(PVOID pInitContext) const;
 	HANDLE	Open(PVOID pInitContext, DWORD AccessCode, DWORD ShareMode) const;
+	BOOL	PreClose(PVOID pOpenContext) const;
 	BOOL	Close(PVOID pOpenContext) const;
 	ULONG	Read(PVOID pOpenContext, PUCHAR pTargetBuffer, ULONG BufferLength) const;
 	ULONG	Write(PVOID pOpenContext, PUCHAR pSourceBytes, ULONG NumberOfBytes) const;
@@ -28,6 +29,7 @@ private:
 	typedef BOOL	(__stdcall *COM_PreDeinit_Pointer)(PVOID pInitContext);
 	typedef BOOL	(__stdcall *COM_Deinit_Pointer)(PVOID pInitContext);
 	typedef HANDLE	(__stdcall *COM_Open_Pointer)(PVOID pInitContext, DWORD AccessCode, DWORD ShareMode);
+	typedef BOOL	(__stdcall *COM_PreClose_Pointer)(PVOID pOpenContext)
 	typedef BOOL	(__stdcall *COM_Close_Pointer)(PVOID pOpenContext);
 	typedef ULONG	(__stdcall *COM_Read_Pointer)(PVOID pOpenContext, PUCHAR pTargetBuffer, ULONG BufferLength);
 	typedef ULONG	(__stdcall *COM_Write_Pointer)(PVOID pOpenContext, PUCHAR pSourceBytes, ULONG NumberOfBytes);
@@ -42,6 +44,7 @@ private:
 		DECLARE_FUNCTION(COM_PreDeinit);
 		DECLARE_FUNCTION(COM_Deinit);
 		DECLARE_FUNCTION(COM_Open);
+		DECLARE_FUNCTION(COM_PreClose);
 		DECLARE_FUNCTION(COM_Close);
 		DECLARE_FUNCTION(COM_Read);
 		DECLARE_FUNCTION(COM_Write);

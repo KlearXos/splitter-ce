@@ -6,6 +6,7 @@
 #define COM_PreDeinit_R FALSE
 #define COM_Deinit_R	TRUE
 #define COM_Open_R		TRUE
+#define COM_PreClose_R	FALSE
 #define COM_Close_R		TRUE
 #define COM_Read_R		TRUE 
 #define COM_Write_R		TRUE
@@ -37,6 +38,7 @@ SerialDriver::GetDriver(HINSTANCE driverLib) {
 		GET_FUNCTION(functions, driverLib, COM_PreDeinit);
 		GET_FUNCTION(functions, driverLib, COM_Deinit);
 		GET_FUNCTION(functions, driverLib, COM_Open);
+		GET_FUNCTION(functions, driverLib, COM_PreClose);
 		GET_FUNCTION(functions, driverLib, COM_Close);
 		GET_FUNCTION(functions, driverLib, COM_Read);
 		GET_FUNCTION(functions, driverLib, COM_Write);
@@ -44,6 +46,12 @@ SerialDriver::GetDriver(HINSTANCE driverLib) {
 		GET_FUNCTION(functions, driverLib, COM_PowerUp);
 		GET_FUNCTION(functions, driverLib, COM_PowerDown);
 		GET_FUNCTION(functions, driverLib, COM_IOControl);
+
+		if ((NULL != functions.COM_PreClose) && (NULL == functions.COM_PreDeinit)) {
+			// If XXX_PreClose (Device Manager) is present, XXX_PreDeinit must 
+			// also be present or the driver will not load.
+			break;
+		}
 
 		result = new SerialDriver(functions);
 	} while (0);
@@ -83,6 +91,13 @@ BOOL
 SerialDriver::Close(PVOID pOpenContext) const {
 	return (m_portFunctions.COM_Close != NULL)
 		? m_portFunctions.COM_Close(pOpenContext)
+		: FALSE;
+}
+
+BOOL
+SerialDriver::PreClose(PVOID pOpenContext) const {
+	return (m_portFunctions.COM_PreClose != NULL)
+		? m_portFunctions.COM_PreClose(pOpenContext)
 		: FALSE;
 }
 

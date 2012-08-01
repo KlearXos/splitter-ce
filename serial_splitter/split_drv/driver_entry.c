@@ -4,30 +4,31 @@
 
 #include "driver_entry.h"
 
+#include "serial_splitter.h"
 
 DRIVER_FUNCTION HANDLE
 COM_Init(ULONG Identifier) {
-	return NULL;
+	return InitSerialSplitter(Identifier);
 }
 
 DRIVER_FUNCTION BOOL
 COM_PreDeinit(PVOID pInitContext) {
-	return FALSE;
+	return PreDeinit(pInitContext);
 }
 
 DRIVER_FUNCTION BOOL
 COM_Deinit(PVOID pInitContext) {
-	return FALSE;
+	return DeinitSerialSplitter(pInitContext);
 }
 
 DRIVER_FUNCTION BOOL
 COM_PowerUp(PVOID pInitContext) {
-	return FALSE;
+	return PowerUp(pInitContext);;
 }
 
 DRIVER_FUNCTION BOOL
 COM_PowerDown(PVOID pInitContext) {
-	return FALSE;
+	return PowerDown(pInitContext);
 }
 
 DRIVER_FUNCTION HANDLE

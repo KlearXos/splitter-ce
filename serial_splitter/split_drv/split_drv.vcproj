@@ -1533,11 +1533,31 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\allocation.c"
+				>
+			</File>
+			<File
 				RelativePath=".\driver_entry.c"
 				>
 			</File>
 			<File
 				RelativePath=".\driver_main.c"
+				>
+			</File>
+			<File
+				RelativePath=".\serial_port_driver.c"
+				>
+			</File>
+			<File
+				RelativePath=".\serial_splitter.c"
+				>
+			</File>
+			<File
+				RelativePath=".\splitted_port.c"
+				>
+			</File>
+			<File
+				RelativePath=".\splitter_settings.c"
 				>
 			</File>
 		</Filter>
@@ -1552,6 +1572,22 @@
 			</File>
 			<File
 				RelativePath=".\driver_entry.h"
+				>
+			</File>
+			<File
+				RelativePath=".\serial_port_driver.h"
+				>
+			</File>
+			<File
+				RelativePath=".\serial_splitter.h"
+				>
+			</File>
+			<File
+				RelativePath=".\splitted_port.h"
+				>
+			</File>
+			<File
+				RelativePath=".\splitter_settings.h"
 				>
 			</File>
 		</Filter>

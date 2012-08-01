@@ -1533,19 +1533,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\driver_entry.cpp"
+				RelativePath=".\driver_entry.c"
 				>
 			</File>
 			<File
-				RelativePath=".\driver_main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\serial_driver.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\serial_driver_proxy.cpp"
+				RelativePath=".\driver_main.c"
 				>
 			</File>
 		</Filter>
@@ -1555,23 +1547,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\allocation.h"
+				>
+			</File>
+			<File
 				RelativePath=".\driver_entry.h"
-				>
-			</File>
-			<File
-				RelativePath=".\serial_driver.h"
-				>
-			</File>
-			<File
-				RelativePath=".\serial_driver_proxy.h"
-				>
-			</File>
-			<File
-				RelativePath=".\serial_splitter.h"
-				>
-			</File>
-			<File
-				RelativePath=".\shared_port.h"
 				>
 			</File>
 		</Filter>

@@ -1537,6 +1537,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\cb_c.c"
+				>
+			</File>
+			<File
 				RelativePath=".\driver_entry.c"
 				>
 			</File>
@@ -1568,6 +1572,10 @@
 			>
 			<File
 				RelativePath=".\allocation.h"
+				>
+			</File>
+			<File
+				RelativePath=".\cb_c.h"
 				>
 			</File>
 			<File

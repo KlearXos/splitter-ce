@@ -15,7 +15,7 @@
 #define COM_PowerDown_R	TRUE
 #define COM_IOControl_R	TRUE
 
-HINSTANCE LoadDriver(LPCWSTR lpszFileName);
+extern HINSTANCE LoadDriver(LPCWSTR lpszFileName);
 
 #define GET_FUNCTION(real_port_functions, real_port_driver, function_name) real_port_functions->function_name = \
 	(function_name##_Pointer)GetProcAddress(real_port_driver, TEXT(#function_name)); \

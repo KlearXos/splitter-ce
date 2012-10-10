@@ -126,7 +126,7 @@ cb_pop(void *cb_ctx, PUCHAR buffer, size_t size)
 			to_copy = ctx->tail - ctx->head;
 
 			if (temp >= to_copy ) {
-				/* buffer contains less date than requested */
+				/* buffer contains less data than requested */
 				loop = FALSE;
 				ctx->head = ctx->tail = ctx->buffer;
 				ctx->empty = TRUE;

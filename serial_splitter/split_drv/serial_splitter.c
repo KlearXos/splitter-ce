@@ -1,8 +1,16 @@
 #include "serial_splitter.h"
 
+#ifndef _UNDER_TESTING
+#include <devload.h>
+#else
+#define DEVACCESS_BUSNAMESPACE          FILE_WRITE_ATTRIBUTES
+#endif
+
 #include "splitter_settings.h"
 #include "serial_port_driver.h"
 #include "allocation.h"
+
+struct __splitted_port_context;
 
 typedef struct __splitter_context {
 	// loaded real driver
@@ -11,6 +19,11 @@ typedef struct __splitter_context {
 	// result of real driver init
 	HANDLE					initHandle;
 }SplitterContext, *PSplitterContext;
+
+////////////////    static functions
+
+
+///////////////////////////////
 
 HANDLE
 InitSerialSplitter(ULONG id) {
@@ -126,4 +139,40 @@ BOOL	PowerDown(PVOID initContext) {
 	}
 
 	return FALSE;
+}
+
+HANDLE
+SplitPort(PVOID initContext, DWORD AccessCode, DWORD ShareMode) {
+	PSplitterContext	context = (PSplitterContext)initContext;
+
+	HANDLE	result = NULL;
+
+	if (AccessCode & DEVACCESS_BUSNAMESPACE) {
+		// open buss access handle
+	} else {
+		// open read/write port
+	}
+
+	return result;
+}
+
+BOOL
+PreClosePort(LPVOID openContext) {
+	return FALSE;
+}
+
+BOOL
+ClosePort(LPVOID openContext) {
+	return FALSE;
+}
+
+ULONG
+PortWrite(PVOID openContext, PUCHAR pSourceBytes, ULONG NumberOfBytes) {
+	return 0;
+}
+
+BOOL
+PortIOControl(PVOID openContext, DWORD dwCode, PBYTE pBufIn,DWORD dwLenIn,
+			  PBYTE pBufOut, DWORD dwLenOut, PDWORD pdwActualOut) {
+				  return FALSE;
 }

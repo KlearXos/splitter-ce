@@ -3,21 +3,22 @@
 
 #include <windows.h>
 
-//BOOL	ReferenceSplittedPortContext(LPVOID openContext);
-//
-//BOOL	DereferenceSplittedPortContext(LPVOID openContext);
+typedef ULONG (__stdcall *WriteToPortFunctionPointer)(LPVOID context, PUCHAR pSourceBytes, ULONG NumberOfBytes);
 
-ULONG	PortRead(PVOID pOpenContext, PUCHAR pTargetBuffer, ULONG BufferLength);
-
-ULONG	PortWrite(PVOID pOpenContext, PUCHAR pSourceBytes, ULONG NumberOfBytes);
-
-ULONG	PortSeek(PVOID pOpenContext, LONG Position, DWORD Type);
-
-// only master port could control port driver indirectly
-// IOcontrol from all other clients should be ingonred
-BOOL	PortIOControl(PVOID pOpenContext, DWORD dwCode, PBYTE pBufIn,DWORD dwLenIn,
+typedef BOOL (__stdcall *IOControlPortFunctionPointer)(LPVOID context, DWORD dwCode, PBYTE pBufIn,DWORD dwLenIn,
     PBYTE pBufOut, DWORD dwLenOut, PDWORD pdwActualOut);
 
+// creates context of splitted port, totally configured
+// output only for write and IO control
+// input data go through DataReceived from port reader
+LPVOID	CreateSplittedPort(DWORD accessCode, DWORD shareMode, LPVOID splitterContext);
+
+// close context that it will be unavailable for any kind of operations
+// context will be deleted when reference count of context will be down to zero
+BOOL	CloseSplittedPort(LPVOID splittedPortContext);
+
+// data received from real port, copy to internal buffer and complete 
+// reading operation if penfing
 BOOL	DataReceived(PVOID pOpenContext, PUCHAR	buffer, ULONG dataLength);
 
 #endif

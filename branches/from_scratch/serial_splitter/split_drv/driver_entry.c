@@ -5,6 +5,7 @@
 #include "driver_entry.h"
 
 #include "serial_splitter.h"
+#include "splitted_port.h"
 
 DRIVER_FUNCTION HANDLE
 COM_Init(ULONG Identifier) {
@@ -33,36 +34,36 @@ COM_PowerDown(PVOID pInitContext) {
 
 DRIVER_FUNCTION HANDLE
 COM_Open(PVOID pInitContext, DWORD AccessCode, DWORD ShareMode) {
-	return NULL;
+	return SplitPort(pInitContext, AccessCode, ShareMode);
 }
 
 DRIVER_FUNCTION BOOL
 Com_PreClose(PVOID pOpenContext) {
-	return FALSE;
+	return PreClosePort(pOpenContext);
 }
 
 DRIVER_FUNCTION BOOL
 COM_Close(PVOID pOpenContext) {
-	return FALSE;
+	return ClosePort(pOpenContext);
 }
 
 DRIVER_FUNCTION ULONG
 COM_Read(PVOID pOpenContext, PUCHAR pTargetBuffer, ULONG BufferLength) {
-	return 0;
+	return PortRead(pOpenContext, pTargetBuffer, BufferLength);
 }
 
 DRIVER_FUNCTION ULONG
 COM_Write(PVOID pOpenContext, PUCHAR pSourceBytes, ULONG NumberOfBytes) {
-	return 0;
+	return PortWrite(pOpenContext, pSourceBytes, NumberOfBytes);
 }
 
 DRIVER_FUNCTION ULONG
 COM_Seek(PVOID pOpenContext, LONG Position, DWORD Type) {
-	return 0;
+	return PortSeek(pOpenContext, Position, Type);
 }
 
 DRIVER_FUNCTION BOOL
 COM_IOControl(PVOID pOpenContext, DWORD dwCode, PBYTE pBufIn,DWORD dwLenIn,
     PBYTE pBufOut, DWORD dwLenOut, PDWORD pdwActualOut) {
-	return FALSE;
+	return PortIOControl(pOpenContext, dwCode, pBufIn, dwLenIn, pBufOut, dwLenOut, pdwActualOut);
 }

@@ -3,7 +3,6 @@
 #include "splitter_settings.h"
 #include "allocation.h"
 
-
 PSplitterSettings
 GetSplitterSettings(wchar_t *reg_path) {
 	return NULL;

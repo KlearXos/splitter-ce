@@ -1,6 +1,7 @@
 #include "splitted_port.h"
 
 #include "allocation.h"
+#include "serial_driver_proxy.h"
 
 #include "cb_c.h"
 
@@ -24,30 +25,50 @@ typedef struct __splitted_port_context {
 	COMMTIMEOUTS	timeouts;
 }SplittedPort, *PSplittedPort;
 
+// check if port is opened with rights to read
 static BOOL	CouldRead(PSplittedPort	context);
 
 // reference context to prevent deleting
 static BOOL	ReferenceSplittedPortContext(PSplittedPort context);
 
-// dereference context, if reference count is 0 - delete context
+// dereference context, if reference count is 0 and 
+// context is inactive - delete context
 static BOOL	DereferenceSplittedPortContext(PSplittedPort context);
 
+// lock context for reading
+// only one read operation could be processed simultaneously
 static void LockReading(PSplittedPort context);
+
+// read operation completed and context could be used for another read operation
 static void UnlockReading(PSplittedPort context);
 
+// any operation that include using data buffer or data buffer event
+// should be executed while data buffer is locked
+// lock data buffer and data received event to exclusive access
 static void LockDataBuffer(PSplittedPort context);
+// unlock data buffer and event
 static void ReleaseDataBuffer(PSplittedPort context);
 
+// return non zero value if data buffer contain data
 static BOOL		HaveDataToRead(PSplittedPort context);
+// read data from buffer.
+// number of bytes read returned.
 static ULONG	ReadDataToBuffer(PSplittedPort context, PUCHAR buffer, ULONG toRead);
 
-static void LockPortSettings(PSplittedPort context);
-static void ReleasePortSettings(PSplittedPort context);
-
+// mark current read operation as aborted
+// if there are no any, this call will be ignored on next read started
 static void AbortRead(PSplittedPort context);
+// clear abort read status from the context
+// operation should be performed at the beginning of any read operation
 static void ClearAbortRead(PSplittedPort context);
+// abort current read operation
 static BOOL ReadAborted(PSplittedPort context);
 
+// access to any settings (get or set) should be performed throuhg
+// function operations, and settings should be locked only inside this functions
+
+// get timeouts from port settings
+// do not lock settings outside this function
 static void		GetTimeouts(PSplittedPort context, COMMTIMEOUTS *timeouts);
 
 BOOL
@@ -65,7 +86,6 @@ DataReceived(PVOID pOpenContext, PUCHAR	buffer, ULONG dataLength) {
 	SetEvent(context->dataReceivedEvent);
 
 	ReleaseDataBuffer(context);
-
 
 	DereferenceSplittedPortContext(context);
 
@@ -220,6 +240,13 @@ PortRead(PVOID pOpenContext, PUCHAR pTargetBuffer, ULONG BufferLength) {
 	return result;
 }
 
+// should not do anything at this point
+// probably it could make sense to send this call to real driver
+ULONG
+PortSeek(PVOID pOpenContext, LONG Position, DWORD Type) {
+	return (ULONG)-1;
+}
+
 BOOL
 CouldRead(PSplittedPort	context) {
 	return context->access_rights & GENERIC_READ;
@@ -276,6 +303,8 @@ void UnlockReading(PSplittedPort context) {
 	ReleaseSemaphore(context->readSemaphore, 1, NULL);
 }
 
+#ifndef DATA_BUFFER_FUNCTIONS
+
 void
 LockDataBuffer(PSplittedPort context) {
 	WaitForSingleObject(context->dataBufferSemaphore, INFINITE);
@@ -296,6 +325,15 @@ ReadDataToBuffer(PSplittedPort context, PUCHAR buffer, ULONG toRead) {
 	return cb_pop(context->dataBuffer, buffer, toRead);
 }
 
+#endif
+
+#ifndef PORT_SETTINGS_FUNCTIONS // Port settings functions
+
+// lock access to context port settings
+static void LockPortSettings(PSplittedPort context);
+// release port settings
+static void ReleasePortSettings(PSplittedPort context);
+
 void
 GetTimeouts(PSplittedPort context, COMMTIMEOUTS *timeouts) {
 	LockPortSettings(context);
@@ -315,6 +353,10 @@ ReleasePortSettings(PSplittedPort context) {
 	ReleaseSemaphore(context->settingsSemaphore, 1, NULL);
 }
 
+#endif
+
+#ifndef ABORT_READ_FUNCTIONS
+
 void
 AbortRead(PSplittedPort context) {
 	context->readAborted = TRUE;
@@ -330,3 +372,5 @@ BOOL
 ReadAborted(PSplittedPort context) {
 	return context->readAborted;
 }
+
+#endif

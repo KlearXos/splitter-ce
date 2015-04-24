@@ -1,0 +1,1 @@
+Allow to split serial port's. Data from serial port can be received by many clients.
